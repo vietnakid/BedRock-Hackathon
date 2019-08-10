@@ -1,0 +1,60 @@
+<head>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <link href="static/css/style.css" rel="stylesheet" id="bootstrap-css">
+    <script src="static/js/crop_javascript.js"></script>
+    <script src="static/js/javascript.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h3 class="page-header">Your Financial Form:</h3>
+        <div class="img-container">
+          <img src="static/data/Washington AndLeeUniversity/01.jpg" alt="Picture">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h3 class="page-header">Your Selected Area:</h3>
+        <div class="docs-preview clearfix">
+          <div class="img-preview preview-lg"></div>
+          <div class="img-preview preview-md"></div>
+          <div class="img-preview preview-sm"></div>
+          <div class="img-preview preview-xs"></div>
+        </div>
+
+        <h3 class="page-header">Data:</h3>
+        <div class="docs-data">
+          <div class="input-group">
+            <label class="input-group-addon" for="dataX">X</label>
+            <input class="form-control" id="dataX" type="text" placeholder="x">
+            <span class="input-group-addon">px</span>
+          </div>
+          <div class="input-group">
+            <label class="input-group-addon" for="dataY">Y</label>
+            <input class="form-control" id="dataY" type="text" placeholder="y">
+            <span class="input-group-addon">px</span>
+          </div>
+          <div class="input-group">
+            <label class="input-group-addon" for="dataWidth">Width</label>
+            <input class="form-control" id="dataWidth" type="text" placeholder="width">
+            <span class="input-group-addon">px</span>
+          </div>
+          <div class="input-group">
+            <label class="input-group-addon" for="dataHeight">Height</label>
+            <input class="form-control" id="dataHeight" type="text" placeholder="height">
+            <span class="input-group-addon">px</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData" type="button">
+    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">
+    Get Data
+    </span>
+    </button>
+    <input class="form-control" id="putData" type="text" placeholder="Get data to here or set data with this value">
+</body>

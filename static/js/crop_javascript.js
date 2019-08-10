@@ -279,7 +279,7 @@
     this.initPreview();
 
     // Format aspect ratio
-    options.aspectRatio = num(options.aspectRatio) || NaN; // 0 -> NaN
+    options.aspectRatio =  NaN; // 0 -> NaN
 
     if (options.autoCrop) {
       this.cropped = true;
@@ -2156,7 +2156,6 @@ $(function () {
         }
 
         result = $image.cropper(data.method, data.option);
-
         if (data.method === 'getCroppedCanvas') {
           $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
         }
