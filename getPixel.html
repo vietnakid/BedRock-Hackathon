@@ -1,0 +1,33 @@
+<head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+<script>
+$(function() {
+    
+    $('img').click(function(e) {
+        
+        if(!this.canvas) {
+            this.canvas = $('<canvas />')[0];
+            this.canvas.width = this.width;
+            this.canvas.height = this.height;
+            this.canvas.getContext('2d').drawImage(this, 0, 0, this.width, this.height);
+        }
+        $('#output').html('X: ' + event.offsetX + '<br>Y: ' + event.offsetY);
+        
+        
+    });
+    
+    
+    
+});
+</script>
+</head>
+
+<center><img src="./data/SOKA/04.jpg"></center>
+
+<pre id="output"></pre>
+
+
+
+
+</body>
