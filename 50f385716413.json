@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "scenic-comfort-242205",
+  "private_key_id": "50f385716413f538e96cfb5f447340b7f5b20cb7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCbWiqWiR6xc+Wd\nJrkTPfNaHUXHZ9iunakJxaFIVdLF2sWRQdQYprCuPhdM+2FaxCHJ9R44U3qTCUgc\n865HSSYqTFxbYI5fymWCPZ0qi+N/zyrKU3g6xy4FIT5b9lWtcY5Y3/MV+AnMEEGw\nDm2+yPYeng4d0/5eXTNq48JgPrxoDI8++2ZhrTI0+87nwg/bgWXuNaWkH02yAS8y\nfwhJqhpf0iFikSH8T2LUxrdDJf5zc/bBhqR05oRiroRfdT9iQtNoIbGBZ4xqFy84\nYqYrQEQQBMLOdLF5J3objseV15hcRVb7wriWHjcXO7oTgbI9s5KO7v3HOBuzYvY+\nJmRrIY0dAgMBAAECggEAARPeb7uggcm27los3D+09Gw15IKObNqhZlqORoCTB8Cz\n6ClPB/vfThs90ilOVxNKURIZhz6FTe2E7SQgjzbF0xco/1v8u4GaOmzVhtziwV/p\njKa9SpIpxZJWeZDbRUNiBE5lYaU7uqA425rlm2Xkd61qWsFOaA2ZrtJmbQpOQ14I\nrnfQZ/qOxuelYLhQ0TCsqoEy/gBgtXC0hmlh+byfIkeXQaHQr6vWorOHF7D/Arow\nQyXN7lwAezuOfj1l0eJnyFPlbe/jM7QbCwl+0xVkjuRw/fgJA3YBH/SlYYX4VJhZ\nQlJRfLjVxGW1R1pS80b4l2fo/aSidoHJguzHUBcrlwKBgQDLBPyhQWURcm5/t28Z\ns+q5VMo25ciB7BYROa1wf2FmVmgSZU+yRvBdo9xzyP6EnwAVAERtlRtC4PFf9feU\n969ESkhBYkMCZTD4F1BMtjtqRh61j15bS+tqMaDNjq+OR8JzPMDMvkoRFQq2Llze\nU9wQ8Hs3f2F0SLi8NSBykYcAIwKBgQDD5LKyGKvEIb/wqJSS9hEZQSnm6L2mnX5o\ny42eb+XH5U/7kqzztHgjRkPwW3FOKaIHORpGQsMQjkW35K7Go0DfbRlyUtvYluE3\nuGFQ5LxHY0PVpBph3g3o0gn8paywKMqXGc0PB8fF3xT9m8y+c0Zzp0CHupamdMTM\nhjxPx1NxvwKBgGLBFz49eDNHbZa0nNds3CWwp/iSR7ljJMzWOJa7b55/M3qXS3AV\n78AtAARWZfAPA9QzYBXJ7QvYLbGXDQqqfNgEJief66aToIFdndLi5f3pA/EfPy+7\nu1TZtTWoTZ8xKtYxXDt76L1sddxuqv/+3NJkmBtD3BzbbvkmApWYUonvAoGBAK/+\nyI05nRiZOdj9nH5slPAbm4nZkIog9XExcArofYkafMGJBdnuSgFnH6LShPm0bd4P\nb4uwb5BwQjL1QhE0mxQg8LvFtb7hz3ZAMS58UqvQgyFuTkWfOt/x1Qcn0f5yp5EZ\nnSHj25fq1PEFCO4SozlFCrTm7nKedjFKaOVEL7QBAoGAIdChypaTt0MJ9d9vgfID\nEmmTpEpOCJANkPikk2vUHhztofnK9MCuyVvS3CGXZ5TwiW2gwFrYoxK3RDdntTNO\n5D6JdBR+af7+HQo/tzWeltXtH8WnncFDnSdZWSK1gtfTrKkKuF7vKJVQT2sFhfHj\no7bOCjH5jpsNuZHscMezyj8=\n-----END PRIVATE KEY-----\n",
+  "client_email": "api-gg@scenic-comfort-242205.iam.gserviceaccount.com",
+  "client_id": "112692794561219455318",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/api-gg%40scenic-comfort-242205.iam.gserviceaccount.com"
+}
