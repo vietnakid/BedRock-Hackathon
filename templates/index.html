@@ -1,7 +1,10 @@
 <head>
+    <script src="static/js/jquery-1.11.1.min.js"></script>
     <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
     <link href="static/css/style.css" rel="stylesheet" id="bootstrap-css">
     <script src="static/js/crop_javascript.js"></script>
     <script src="static/js/javascript.js"></script>
@@ -51,10 +54,48 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData" type="button">
-    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">
-    Get Data
-    </span>
-    </button>
-    <input class="form-control" id="putData" type="text" placeholder="Get data to here or set data with this value">
+  <div class="form-group">
+      <form name="add_name" id="add_name">
+         <div class="table-responsive">
+            <table class="table table-bordered" id="dynamic_field">
+               <tr>
+                  <!-- <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper('getData')">Get Data</span></button><input class="form-control" id="putData" type="text" placeholder="Get data to here or set data with this value"> -->
+                  <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+               </tr>
+               <input value="{{form_names|length}}" id="total_form" hidden>
+               {% for form_name in form_names %}
+               <tr id="row'+i+'">
+                  <td>Form name: <input name="form-name-{{loop.index}}" type="text" value="{{form_name}}"></td>
+                  <td><button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData{{loop.index}}" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span></button><input name="form-possition-{{loop.index}}" class="form-control" id="putData{{loop.index}}" type="text" placeholder="Get Pixel"></td>
+                  <td><button type="button" name="remove" id="{{loop.index}}" class="btn btn-danger btn_remove">X</button></td>
+               </tr>
+                {% endfor %}
+            </table>
+            <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+         </div>
+      </form>
+   </div>
+   <script>
+      $(document).ready(function(){
+        var i= $('#total_form').val();
+       $('#add').click(function(){
+         i++;
+         $('#dynamic_field').append('<tr id="row'+i+'"><td>Form name: <input name="form-name-'+i+'" type="text"></td><td><button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData'+i+'" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span></button><input name="form-possition-'+i+'" class="form-control" id="putData'+i+'" type="text" placeholder="Get Pixel"></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+       });
+       
+       $(document).on('click', '.btn_remove', function(){
+         var button_id = $(this).attr("id"); 
+         $('#row'+button_id+'').remove();
+       });
+       
+     });
+    </script>
+  <!-- <div id="dynamic-field">
+      <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData" type="button">
+        <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper('getData')">
+        Get Data
+        </span>
+        </button>
+        <input class="form-control" id="putData" type="text" placeholder="Get data to here or set data with this value">
+  </div> -->
 </body>
