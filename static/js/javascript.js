@@ -20,7 +20,7 @@ $(document).ready(function(){
               <input name="form-possition-${counter}" class="form-control" id="putData-${counter}" type="text" placeholder="Get Pixel">
           </div>
         </td>
-        <td><button type="button" name="remove" id="remove-${counter}" data-id="${counter}" class="btn btn-danger btn_remove">X</button></td>
+        <td><button type="button" id="remove-${counter}" data-id="${counter}" class="btn btn-danger btn_remove">X</button></td>
      </tr>
         `
         $('#dynamic_field').append(form);
@@ -33,23 +33,8 @@ $(document).ready(function(){
         console.log($('#row-'+button_id))
         $('#row-'+button_id).remove();
     });
-    
-    // When user click submit button
-    $('#submit').click(function(){		
-      $.ajax({
-        url:"name.php",
-        method:"POST",
-        data:$('#add_name').serialize(),
-        success:function(data)
-        {
-          alert(data);
-          $('#add_name')[0].reset();
-        }
-      });
-    });
 
-    // Type Selected
-    // $("input[name^=input-type-]").change(function(){
+    // Radio Change Selected
     $(document).on('change', '.radInp', function(){
         data_id = $(this).attr('data-id');
         value = $(this).attr('value');
@@ -69,24 +54,26 @@ $(document).ready(function(){
             <table id='table-data-${data_id}'>
             <tr id='row-data-${data_id}-1'>
                 <td>
-                <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-1" type="button">
-                <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
-                </button>
+                    <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-1" type="button">
+                        <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
+                    </button>
+                Form name: <input name="form-name-${data_id}-1" type="text" value="">
                 <input name="form-possition-${data_id}-1" class="form-control" id="putData-${data_id}-1" type="text" placeholder="Get Pixel">
                 </td>
-                <td><button type="button" name="remove" id="remove-choice-${data_id}-1" data-id="${data_id}-1" class="btn btn-danger btn-rad-rm">X</button></td>
+                <td><button type="button" id="remove-choice-${data_id}-1" data-id="${data_id}-1" class="btn btn-danger btn-rad-rm">X</button></td>
             </tr>
             <tr id='row-data-${data_id}-2'>
                 <td>
-                <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-2" type="button">
-                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
+                    <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-2" type="button">
+                        <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
                     </button>
-                    <input name="form-possition-${data_id}-2" class="form-control" id="putData-${data_id}-2" type="text" placeholder="Get Pixel">
+                Form name: <input name="form-name-${data_id}-2" type="text" value="">
+                <input name="form-possition-${data_id}-2" class="form-control" id="putData-${data_id}-2" type="text" placeholder="Get Pixel">
                 </td>
-                <td><button type="button" name="remove" id="remove-choice-${data_id}-2" data-id="${data_id}-2" class="btn btn-danger btn-rad-rm">X</button></td>
+                <td><button type="button" id="remove-choice-${data_id}-2" data-id="${data_id}-2" class="btn btn-danger btn-rad-rm">X</button></td>
             </tr>
             </table>
-            <button type="button" name="add" id="add-choice-${data_id}" data-id="${data_id}" class="btn btn-success btn-red-add">Add More Row</button>
+            <button type="button" id="add-choice-${data_id}" data-id="${data_id}" class="btn btn-success btn-red-add">Add More Row</button>
             `
             div_display_data.html(form);
         }
@@ -104,9 +91,10 @@ $(document).ready(function(){
             <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-${counter}" type="button">
                 <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
                 </button>
+                Form name: <input name="form-name-${data_id}-${counter}" type="text" value="">
                 <input name="form-possition-${data_id}-${counter}" class="form-control" id="putData-${data_id}-${counter}" type="text" placeholder="Get Pixel">
         </td>
-        <td><button type="button" name="remove" id="remove-choice-${data_id}-${counter}" data-id="${data_id}-${counter}" class="btn btn-danger btn-rad-rm">X</button></td>
+        <td><button type="button" id="remove-choice-${data_id}-${counter}" data-id="${data_id}-${counter}" class="btn btn-danger btn-rad-rm">X</button></td>
         </tr>
         `
         table_display_data.append(form);
@@ -119,6 +107,20 @@ $(document).ready(function(){
         console.log(deleted_row)
         deleted_row.remove();
     });
+
+    // // When user click submit button
+    // $('#submit').click(function(){		
+    //     $.ajax({
+    //       url:"name.php",
+    //       method:"POST",
+    //       data:$('#add_name').serialize(),
+    //       success:function(data)
+    //       {
+    //         alert(data);
+    //         $('#add_name')[0].reset();
+    //       }
+    //     });
+    //   });
     
   });
 
