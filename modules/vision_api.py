@@ -56,4 +56,4 @@ def convert_data(json_text):
                                 _text = _text + " "
                 bl['text'] = _text
                 result.append(bl)
-    return result
+    return json.dumps(result)

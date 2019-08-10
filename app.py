@@ -8,7 +8,7 @@ app = Flask(__name__)
 def hello():
     return "Hello, World!"
 
-app.config["IMAGE_UPLOADS"] = "static/data"
+# app.config["IMAGE_UPLOADS"] = "static/data"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 
 @app.route("/upload-image", methods=["GET", "POST"])
@@ -16,16 +16,18 @@ def upload_image():
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
+            if request.form['university']:
+                uni = request.form['university']
+                path_upload = "static/data/" + uni
             if image.filename == "":
-                print("No filename")
                 return redirect(request.url)
             if allowed_image(image.filename):
                 filename = secure_filename(image.filename)
-                image.save(os.path.join(app.config["IMAGE_UPLOADS"], filename))
-                print("Image saved")
-                return redirect(request.url)
+                os.mkdir(path_upload)
+                image.save(os.path.join(path_upload, filename))
+                from modules import upload_image as up
+                return up.transfer_data(path_upload + "/" + filename)
             else:
-                print("That file extension is not allowed")
                 return redirect(request.url)
     return render_template("upload-image.html")
 
