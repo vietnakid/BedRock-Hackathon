@@ -32,8 +32,8 @@ def base64_file(path):
     return encoded_string
 
 
-def convert_data(json_text):
-    responses = json_text['responses']
+def convert_data(resp):
+    responses = resp['responses']
     result = list()
     for response in responses:
         pages = response['fullTextAnnotation']['pages']
@@ -42,7 +42,7 @@ def convert_data(json_text):
             for block in blocks:
                 bl = dict()
                 boundingBox = block['boundingBox']
-                bl['boundingBox'] = boundingBox
+                bl['position'] = normalize_data(boundingBox['vertices'])
                 paragraphs = block['paragraphs']
                 _text = ""
                 for paragraph in paragraphs:
