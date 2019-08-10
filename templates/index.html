@@ -66,6 +66,7 @@
                {% for form_name in form_names %}
                <tr id="row'+i+'">
                   <td>Form name: <input name="form-name-{{loop.index}}" type="text" value="{{form_name}}"></td>
+                  <td>Input type: <input name="input-type-{{loop.index}}" type="text"></td>
                   <td><button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData{{loop.index}}" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span></button><input name="form-possition-{{loop.index}}" class="form-control" id="putData{{loop.index}}" type="text" placeholder="Get Pixel"></td>
                   <td><button type="button" name="remove" id="{{loop.index}}" class="btn btn-danger btn_remove">X</button></td>
                </tr>
@@ -80,7 +81,8 @@
         var i= $('#total_form').val();
        $('#add').click(function(){
          i++;
-         $('#dynamic_field').append('<tr id="row'+i+'"><td>Form name: <input name="form-name-'+i+'" type="text"></td><td><button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData'+i+'" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span></button><input name="form-possition-'+i+'" class="form-control" id="putData'+i+'" type="text" placeholder="Get Pixel"></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+         var form = '<tr id="row'+i+'"><td>Form name: <input name="form-name-'+i+'" type="text"></td><td><button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData'+i+'" type="button"><span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span></button><input name="form-possition-'+i+'" class="form-control" id="putData'+i+'" type="text" placeholder="Get Pixel"></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>'
+         $('#dynamic_field').append(form);
        });
        
        $(document).on('click', '.btn_remove', function(){
