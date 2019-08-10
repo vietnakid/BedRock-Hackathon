@@ -57,3 +57,26 @@ def convert_data(resp):
                 bl['text'] = _text
                 result.append(bl)
     return json.dumps(result)
+
+def normalize_data(resp):
+    max_x = 0
+    min_x = 99999
+    max_y = 0
+    min_y = 99999
+    result = {}
+    for res in resp:
+        x = res['x']
+        y = res['y']
+        if x < min_x:
+            min_x = x
+        if y < min_y:
+            min_y = y
+        if x > max_x:
+            max_x = x
+        if y > max_y:
+            max_y = y
+    result['x'] = min_x
+    result['y'] = min_y
+    result['width'] = max_x - min_x
+    result['height'] = max_y - min_y
+    return result

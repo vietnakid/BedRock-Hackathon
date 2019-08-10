@@ -1,0 +1,25 @@
+<script src="static/js/jquery-1.11.1.min.js"></script>
+
+<style>
+.check-box {
+    display: block;
+}
+</style>
+
+<form id="myForm" action="#" method="POST">
+    {% if result %}
+        {% for item in result %}
+            <div class="check-box">
+                <input type="checkbox" name="check_list_{{loop.index}}" value="{{item.text}}">{{item.text}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <input id="" type="submit" />
+</form>
+
+<script>
+    $("#btn").click(function() {
+        var formData = JSON.stringify($("#myForm").serializeArray());
+    });
+    
+</script>

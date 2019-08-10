@@ -5,8 +5,9 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Hello, World!"
+def main():
+    import modules.create_new_form as create_new_form
+    return create_new_form.create_new_form()
 
 # app.config["IMAGE_UPLOADS"] = "static/data"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
@@ -39,6 +40,11 @@ def allowed_image(filename):
         return True
     else:
         return False
+
+def to_pretty_json(value):
+    return json.dumps(value)
+    
+app.jinja_env.filters['tojson_pretty'] = to_pretty_json
 
 if __name__ == "__main__":
     app.run(debug=True)
