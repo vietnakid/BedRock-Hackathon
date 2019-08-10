@@ -57,8 +57,8 @@ $(document).ready(function(){
                     <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-1" type="button">
                         <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
                     </button>
-                Form name: <input name="form-name-${data_id}-1" type="text" value="">
-                <input name="form-possition-${data_id}-1" class="form-control" id="putData-${data_id}-1" type="text" placeholder="Get Pixel">
+                Form name: <input name="option-name-${data_id}-1" type="text" value="">
+                <input name="option-possition-${data_id}-1" class="form-control" id="putData-${data_id}-1" type="text" placeholder="Get Pixel">
                 </td>
                 <td><button type="button" id="remove-choice-${data_id}-1" data-id="${data_id}-1" class="btn btn-danger btn-rad-rm">X</button></td>
             </tr>
@@ -67,8 +67,8 @@ $(document).ready(function(){
                     <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-2" type="button">
                         <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
                     </button>
-                Form name: <input name="form-name-${data_id}-2" type="text" value="">
-                <input name="form-possition-${data_id}-2" class="form-control" id="putData-${data_id}-2" type="text" placeholder="Get Pixel">
+                Form name: <input name="option-name-${data_id}-2" type="text" value="">
+                <input name="option-possition-${data_id}-2" class="form-control" id="putData-${data_id}-2" type="text" placeholder="Get Pixel">
                 </td>
                 <td><button type="button" id="remove-choice-${data_id}-2" data-id="${data_id}-2" class="btn btn-danger btn-rad-rm">X</button></td>
             </tr>
@@ -91,8 +91,8 @@ $(document).ready(function(){
             <button class="btn btn-primary" data-method="getData" data-option="" data-target="#putData-${data_id}-${counter}" type="button">
                 <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("getData")">Get Data</span>
                 </button>
-                Form name: <input name="form-name-${data_id}-${counter}" type="text" value="">
-                <input name="form-possition-${data_id}-${counter}" class="form-control" id="putData-${data_id}-${counter}" type="text" placeholder="Get Pixel">
+                Form name: <input name="option-name-${data_id}-${counter}" type="text" value="">
+                <input name="option-possition-${data_id}-${counter}" class="form-control" id="putData-${data_id}-${counter}" type="text" placeholder="Get Pixel">
         </td>
         <td><button type="button" id="remove-choice-${data_id}-${counter}" data-id="${data_id}-${counter}" class="btn btn-danger btn-rad-rm">X</button></td>
         </tr>
