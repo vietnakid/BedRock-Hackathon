@@ -7,7 +7,24 @@ import textwrap
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+from PIL import ImageOps
 from flask import Flask, render_template, json, request, jsonify, session, send_file, redirect
+
+def countVerticalLine(img, left, top, width, height):
+    area = (left, top, left + width, top + height)
+    cropped_img = img.crop(area)
+    res = 0
+    verLine = []
+    for i in range(width):
+        r, g, b = cropped_img.getpixel((i, height / 2))
+        print(r, b, g)
+        if (r < 220 or b < 220 or g < 220) and (len(verLine) > 0 and verLine[len(verLine) - 1] == False):
+            res += 1
+            verLine.append(True)
+        else:
+            verLine.append(False)
+    print res
+    return res
 
 def process(path, userData):
     image_path = path[:-4] + "jpg"
@@ -31,11 +48,23 @@ def process(path, userData):
             pos = curServerData.get("position")
             x = pos.get('left')
             y = pos.get('top')
-            font_size = pos.get('height')
-            font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
-            text_size_width, text_size_height = draw.textsize(formValue, font=font)
-            x = x + (pos.get('width') - text_size_width) / 2
-            draw.text((x, y), userText, (0,0,0), font=font)
+            verticalLines = countVerticalLine(img, pos.get('left'), pos.get('top'), pos.get('width'), pos.get('height'))
+            
+            if verticalLines > 1:
+                width = pos.get('width')
+                eachOWith = width / verticalLines
+                for char in userText:
+                    font_size = eachOWith
+                    font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
+                    text_size_width, text_size_height = draw.textsize(char, font=font)
+                    draw.text((x + 4, y + (pos.get('height') - text_size_height) / 2), char, (0,0,0), font=font)
+                    x = x + eachOWith
+            else:
+                font_size = pos.get('height')
+                font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
+                text_size_width, text_size_height = draw.textsize(formValue, font=font)
+                x = x + (pos.get('width') - text_size_width) / 2
+                draw.text((x, y), userText, (0,0,0), font=font)
         elif form_type == "radio":
             user_choice = formValue
             server_data_choice = curServerData.get("choices").get(user_choice)
