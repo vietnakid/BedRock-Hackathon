@@ -10,7 +10,12 @@
       <hr>
 
       <form action="/upload-image" method="POST" enctype="multipart/form-data">
-        Name of university: <input type="text" name="university">
+        Name of university:<br/>
+        {% for dirname in dirnames %}
+        <input type="radio" name="university" value="{{dirname}}">{{dirname}}<br>
+        {% endfor %}
+        <input type="radio" name="university" value="">Other <input type="text" name="other-university">
+        
         <div class="form-group">
           <label>Select image</label>
           <div class="custom-file">
