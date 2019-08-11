@@ -9,6 +9,11 @@ def main():
     import modules.create_new_form as create_new_form
     return create_new_form.create_new_form()
 
+@app.route("/createReport", methods=['POST'])
+def createReport():
+    import modules.createReport as createReport
+    return createReport.create_report()
+
 # app.config["IMAGE_UPLOADS"] = "static/data"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 

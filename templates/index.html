@@ -59,10 +59,10 @@
          <div class="table-responsive">
             <table class="table table-bordered">
               <tbody id="dynamic_field">
-               <input value="{{form_names|length}}" id="total_form" hidden>
-               {% for form_name in form_names %}
+               <input value="{{results|length}}" id="total_form" hidden>
+               {% for result in results %}
                <tr id="row-{{loop.index}}">
-                  <td>Form name: <input name="form-name-{{loop.index}}" type="text" value="{{form_name}}"></td>
+                  <td>Form name: <input name="form-name-{{loop.index}}" type="text" value="{{result.text}}"></td>
                   <td>Input type:<br>
                     <input type="radio" name="input-type-{{loop.index}}" class="radInp" value="text" data-id="{{loop.index}}" checked> Text<br>
                     <input type="radio" name="input-type-{{loop.index}}" class="radInp" value="multiline_text" data-id="{{loop.index}}"> Multiline Text<br>
@@ -77,7 +77,7 @@
                         <button class="btn btn-primary" data-method="setData" data-target="#putData-{{loop.index}}" type="button">
                         <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper("setData", data)">Set Data</span>
                         </button>
-                        <input name="form-possition-{{loop.index}}" class="form-control" id="putData-{{loop.index}}" type="text" placeholder="Get Pixel">
+                        <input name="form-possition-{{loop.index}}" class="form-control" id="putData-{{loop.index}}" type="text" value="{{result.position | tojson_pretty}}">
                     </div>
                   </td>
                   <td><button type="button" id="remove-{{loop.index}}" data-id="{{loop.index}}" class="btn btn-danger btn_remove">X</button></td>
