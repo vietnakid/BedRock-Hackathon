@@ -54,9 +54,9 @@ def convert_data(resp):
                             _text = _text + text
                             if symbol.get('property') and 'detectedBreak' in symbol.get('property'):
                                 _text = _text + " "
-                bl['text'] = _text
+                bl['text'] = str(_text).replace("'", "").replace('"', "")
                 result.append(bl)
-    return json.dumps(result)
+    return result
 
 def normalize_data(resp):
     max_x = 0
