@@ -7,18 +7,19 @@ import textwrap
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+from flask import Flask, render_template, json, request, jsonify, session
 
-def process(userData):
-    path = "./data/{}/".format(data.get('university'))
-    img = Image.open(path + "04.jpg")
+def process(path, userData):
+    image_path = path[:-4] + "jpg"
+    img = Image.open(image_path)
     jsonData = ""
-    with open(path + "04.json", "r") as f:
+    with open(path, "r") as f:
         jsonData = f.read()
     jsonData = json.loads(jsonData)
     server_data = jsonData.get('forms')
     draw = ImageDraw.Draw(img)
     
-    for formText, formValue in userData.get('forms').items():
+    for formText, formValue in userData.items():
         curServerData = server_data.get(formText)
         form_type = curServerData.get("type")
         if form_type == "text":
@@ -101,10 +102,6 @@ def process(userData):
                 draw.text((x0, y), line, (0,0,0), font=font)
                 y += height
 
-            
-
-
-
     # img.save('sample-out.jpg')
     img.show()
 
@@ -135,3 +132,23 @@ if __name__ == "__main__":
     }
     process(data)
     
+
+def generateReport():
+    # print(request.form)
+    form_names = []
+    for form in request.form:
+        if 'source' not in form:
+            form_names.append(form)
+
+    res = dict()
+
+    for form_name in form_names:
+        filePath = request.form.get(form_name + "_source")
+        if filePath not in res:
+            res[filePath] = {}
+        res[filePath][form_name] = request.form.get(form_name)
+
+    for filePath in res:
+        print(filePath)
+        process(filePath, res[filePath])
+    return render_template('write_report.html', form_datas=[])

@@ -1,0 +1,36 @@
+<head>
+        <script src="static/js/jquery-1.11.1.min.js"></script>
+        <link href="static/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="static/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> -->
+        <link href="static/css/style.css" rel="stylesheet" id="bootstrap-css">
+        <script src="static/js/crop_javascript.js"></script>
+        <script src="static/js/javascript.js"></script>
+    </head>
+        
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="form-group">
+                    <form action="/generateReport" method="POST">
+                        {% for form_data in form_datas %}
+                            <div class="md-form">
+                                <label for="inputPrefilledEx">{{form_data.title}}</label>
+                                <input value={{form_data.source}} name="{{form_data.title}}_source" hidden>
+                                {% if form_data.type == "text" %} 
+                                    <input value="" type="text" name="{{form_data.title}}" class="form-control">
+                                {% endif %}
+                                {% if form_data.type == "multiline_text" %} 
+                                <textarea class="form-control rounded-0" name="{{form_data.title}}" rows="3"></textarea>
+                                {% endif %}
+                            </div>
+                        </br>
+                        {% endfor %}
+                        <input type="submit" id="submit" class="btn btn-info" value="Submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>

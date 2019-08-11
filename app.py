@@ -14,6 +14,21 @@ def createReport():
     import modules.createReport as createReport
     return createReport.create_report()
 
+@app.route("/generateReport", methods=['POST'])
+def generateReport():
+    import modules.generateReport as generateReport
+    return generateReport.generateReport()
+
+@app.route("/writeReport/<universityName>")
+def writeReport(universityName):
+    import modules.write_report as write_report
+    return write_report.write_report(universityName)
+
+@app.route("/userMode")
+def userMode():
+    import modules.userMode as userMode
+    return userMode.userMode()
+
 # app.config["IMAGE_UPLOADS"] = "static/data"
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 
