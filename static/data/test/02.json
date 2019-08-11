@@ -1,0 +1,654 @@
+{
+    "forms":[
+        {
+            "label":"Washington and Lee University International Grant Supplement 2019-20 ",
+            "position":{
+                "height":37,
+                "left":212,
+                "top":277,
+                "width":1287
+            },
+            "type":"text"
+        },
+        {
+            "label":"The W&L grant supplement form is required for all applicants who are not United States citizens or permanent residents seeking W&L University need-based grant. This form is part of the complete International need-based grant ",
+            "position":{
+                "height":59,
+                "left":177,
+                "top":369,
+                "width":1356
+            },
+            "type":"text"
+        },
+        {
+            "label":"and are ",
+            "position":{
+                "height":21,
+                "left":177,
+                "top":404,
+                "width":82
+            },
+            "type":"text"
+        },
+        {
+            "label":"application and must be submitted, along with the CSS Profile and Certification of Finances, if you wish to be evaluated ",
+            "position":{
+                "height":22,
+                "left":177,
+                "top":440,
+                "width":1356
+            },
+            "type":"text"
+        },
+        {
+            "label":"for need-based grant eligibility. United States citizens and permanent residents do not need to complete this form. This ",
+            "position":{
+                "height":23,
+                "left":177,
+                "top":475,
+                "width":1354
+            },
+            "type":"text"
+        },
+        {
+            "label":"form may be mailed, or uploaded to the W&L upload site. ",
+            "position":{
+                "height":25,
+                "left":177,
+                "top":510,
+                "width":652
+            },
+            "type":"text"
+        },
+        {
+            "label":"Family and Student Data The W&L International Grant is awarded based on financial need. Therefore, we information about your family and personal resources. Use the best figures available to you. W&L does expect the student's family to contribute to his/her education to the extent possible. ",
+            "position":{
+                "height":122,
+                "left":177,
+                "top":572,
+                "width":1257
+            },
+            "type":"text"
+        },
+        {
+            "label":"require accurate and complete ",
+            "position":{
+                "height":25,
+                "left":1073,
+                "top":608,
+                "width":331
+            },
+            "type":"text"
+        },
+        {
+            "label":"1. Full name ",
+            "position":{
+                "height":22,
+                "left":178,
+                "top":728,
+                "width":161
+            },
+            "type":"text"
+        },
+        {
+            "label":"Gender ",
+            "position":{
+                "height":18,
+                "left":974,
+                "top":728,
+                "width":86
+            },
+            "type":"text"
+        },
+        {
+            "label":"Date of birth ",
+            "position":{
+                "height":18,
+                "left":1198,
+                "top":728,
+                "width":153
+            },
+            "type":"text"
+        },
+        {
+            "label":"Family name ",
+            "position":{
+                "height":18,
+                "left":361,
+                "top":758,
+                "width":88
+            },
+            "type":"text"
+        },
+        {
+            "label":"Middle ",
+            "position":{
+                "height":12,
+                "left":897,
+                "top":759,
+                "width":46
+            },
+            "type":"text"
+        },
+        {
+            "label":"Month / Day/ Year ",
+            "position":{
+                "height":14,
+                "left":1374,
+                "top":759,
+                "width":145
+            },
+            "type":"text"
+        },
+        {
+            "label":"First ",
+            "position":{
+                "height":11,
+                "left":717,
+                "top":760,
+                "width":30
+            },
+            "type":"text"
+        },
+        {
+            "label":"Country of citizenship ",
+            "position":{
+                "height":27,
+                "left":974,
+                "top":800,
+                "width":263
+            },
+            "type":"text"
+        },
+        {
+            "label":"2. Country of birth ",
+            "position":{
+                "height":28,
+                "left":185,
+                "top":799,
+                "width":235
+            },
+            "type":"text"
+        },
+        {
+            "label":"3. Permanent home address ",
+            "position":{
+                "height":18,
+                "left":186,
+                "top":869,
+                "width":337
+            },
+            "type":"text"
+        },
+        {
+            "label":"State, province or country ",
+            "position":{
+                "height":19,
+                "left":1186,
+                "top":898,
+                "width":180
+            },
+            "type":"text"
+        },
+        {
+            "label":"Number and street ",
+            "position":{
+                "height":13,
+                "left":561,
+                "top":899,
+                "width":135
+            },
+            "type":"text"
+        },
+        {
+            "label":"City ",
+            "position":{
+                "height":15,
+                "left":961,
+                "top":900,
+                "width":27
+            },
+            "type":"text"
+        },
+        {
+            "label":"Zip or postal code ",
+            "position":{
+                "height":16,
+                "left":1403,
+                "top":899,
+                "width":126
+            },
+            "type":"text"
+        },
+        {
+            "label":"or town ",
+            "position":{
+                "height":12,
+                "left":998,
+                "top":900,
+                "width":52
+            },
+            "type":"text"
+        },
+        {
+            "label":"4. Permanent home telephone ",
+            "position":{
+                "height":26,
+                "left":185,
+                "top":939,
+                "width":363
+            },
+            "type":"text"
+        },
+        {
+            "label":"Email address ",
+            "position":{
+                "height":17,
+                "left":974,
+                "top":942,
+                "width":163
+            },
+            "type":"text"
+        },
+        {
+            "label":"City code ",
+            "position":{
+                "height":18,
+                "left":698,
+                "top":970,
+                "width":67
+            },
+            "type":"text"
+        },
+        {
+            "label":"Country code ",
+            "position":{
+                "height":19,
+                "left":573,
+                "top":970,
+                "width":96
+            },
+            "type":"text"
+        },
+        {
+            "label":"Number ",
+            "position":{
+                "height":11,
+                "left":798,
+                "top":973,
+                "width":61
+            },
+            "type":"text"
+        },
+        {
+            "label":"5. Father's name ",
+            "position":{
+                "height":23,
+                "left":174,
+                "top":1012,
+                "width":210
+            },
+            "type":"text"
+        },
+        {
+            "label":"Age ",
+            "position":{
+                "height":23,
+                "left":1199,
+                "top":1015,
+                "width":42
+            },
+            "type":"text"
+        },
+        {
+            "label":"6. Father's occupation ",
+            "position":{
+                "height":32,
+                "left":185,
+                "top":1077,
+                "width":266
+            },
+            "type":"text"
+        },
+        {
+            "label":"Employer ",
+            "position":{
+                "height":24,
+                "left":974,
+                "top":1082,
+                "width":111
+            },
+            "type":"text"
+        },
+        {
+            "label":"7. Mother's name ",
+            "position":{
+                "height":25,
+                "left":186,
+                "top":1147,
+                "width":212
+            },
+            "type":"text"
+        },
+        {
+            "label":"Age ",
+            "position":{
+                "height":24,
+                "left":1199,
+                "top":1150,
+                "width":42
+            },
+            "type":"text"
+        },
+        {
+            "label":"8. Mother's occupation ",
+            "position":{
+                "height":30,
+                "left":186,
+                "top":1213,
+                "width":280
+            },
+            "type":"text"
+        },
+        {
+            "label":"Employer ",
+            "position":{
+                "height":24,
+                "left":974,
+                "top":1217,
+                "width":111
+            },
+            "type":"text"
+        },
+        {
+            "label":"Salary/wages( ",
+            "position":{
+                "height":37,
+                "left":624,
+                "top":1290,
+                "width":171
+            },
+            "type":"text"
+        },
+        {
+            "label":"9. Primary ",
+            "position":{
+                "height":27,
+                "left":185,
+                "top":1293,
+                "width":123
+            },
+            "type":"text"
+        },
+        {
+            "label":"Family-owned business/farm ",
+            "position":{
+                "height":35,
+                "left":828,
+                "top":1290,
+                "width":342
+            },
+            "type":"text"
+        },
+        {
+            "label":"Other ",
+            "position":{
+                "height":24,
+                "left":1221,
+                "top":1294,
+                "width":72
+            },
+            "type":"text"
+        },
+        {
+            "label":"source of family income ",
+            "position":{
+                "height":24,
+                "left":317,
+                "top":1294,
+                "width":277
+            },
+            "type":"text"
+        },
+        {
+            "label":"10. List your family's total annual income in U.S. dollars for the year 2017: ",
+            "position":{
+                "height":23,
+                "left":186,
+                "top":1373,
+                "width":860
+            },
+            "type":"text"
+        },
+        {
+            "label":"Father's Total Earnings (Gross) ",
+            "position":{
+                "height":28,
+                "left":219,
+                "top":1425,
+                "width":341
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1428,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"Mother's Total Earnings (Gross) ",
+            "position":{
+                "height":28,
+                "left":219,
+                "top":1462,
+                "width":351
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1465,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":23,
+                "left":959,
+                "top":1500,
+                "width":45
+            },
+            "type":"text"
+        },
+        {
+            "label":"Other income (describe these income items below*) ",
+            "position":{
+                "height":23,
+                "left":219,
+                "top":1501,
+                "width":563
+            },
+            "type":"text"
+        },
+        {
+            "label":"Total Gross Income ",
+            "position":{
+                "height":18,
+                "left":219,
+                "top":1556,
+                "width":236
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1556,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"Description of other income: ",
+            "position":{
+                "height":28,
+                "left":219,
+                "top":1614,
+                "width":356
+            },
+            "type":"text"
+        },
+        {
+            "label":"11. List your family's total annual payments that reduced your total (gross) income in U.S. dollars for the year 2017: ",
+            "position":{
+                "height":25,
+                "left":187,
+                "top":1729,
+                "width":1317
+            },
+            "type":"text"
+        },
+        {
+            "label":"Income taxes paid ",
+            "position":{
+                "height":28,
+                "left":219,
+                "top":1782,
+                "width":214
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":22,
+                "left":960,
+                "top":1784,
+                "width":44
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":22,
+                "left":960,
+                "top":1821,
+                "width":44
+            },
+            "type":"text"
+        },
+        {
+            "label":"Property taxes paid ",
+            "position":{
+                "height":29,
+                "left":219,
+                "top":1820,
+                "width":235
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1858,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"Rent or ",
+            "position":{
+                "height":20,
+                "left":218,
+                "top":1859,
+                "width":89
+            },
+            "type":"text"
+        },
+        {
+            "label":"Mortgage payment ",
+            "position":{
+                "height":25,
+                "left":318,
+                "top":1859,
+                "width":230
+            },
+            "type":"text"
+        },
+        {
+            "label":"Health care expenses ",
+            "position":{
+                "height":28,
+                "left":218,
+                "top":1894,
+                "width":258
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1895,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"Educational expenses (other than applicant) ",
+            "position":{
+                "height":28,
+                "left":220,
+                "top":1930,
+                "width":539
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":21,
+                "left":960,
+                "top":1931,
+                "width":43
+            },
+            "type":"text"
+        },
+        {
+            "label":"Total Reductions ",
+            "position":{
+                "height":19,
+                "left":219,
+                "top":1985,
+                "width":205
+            },
+            "type":"text"
+        },
+        {
+            "label":"US$ ",
+            "position":{
+                "height":20,
+                "left":960,
+                "top":1985,
+                "width":43
+            },
+            "type":"text"
+        }
+    ]
+}

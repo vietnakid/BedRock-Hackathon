@@ -7,7 +7,7 @@ import textwrap
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from flask import Flask, render_template, json, request, jsonify, session
+from flask import Flask, render_template, json, request, jsonify, session, send_file, redirect
 
 def process(path, userData):
     image_path = path[:-4] + "jpg"
@@ -20,11 +20,14 @@ def process(path, userData):
     draw = ImageDraw.Draw(img)
     
     for formText, formValue in userData.items():
-        curServerData = server_data.get(formText)
+        curServerData = {}
+        for data in server_data:
+            if data['label'] == formText:
+                curServerData = data
         form_type = curServerData.get("type")
+        print("form_type = ", form_type)
         if form_type == "text":
             userText = formValue
-
             pos = curServerData.get("position")
             x = pos.get('left')
             y = pos.get('top')
@@ -34,8 +37,7 @@ def process(path, userData):
             x = x + (pos.get('width') - text_size_width) / 2
             draw.text((x, y), userText, (0,0,0), font=font)
         elif form_type == "radio":
-            user_choice = formValue.get("choice")
-            user_description = formValue.get("description")
+            user_choice = formValue
             server_data_choice = curServerData.get("choices").get(user_choice)
 
             pos = server_data_choice.get("position")
@@ -45,24 +47,12 @@ def process(path, userData):
             font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
             text_size_width, text_size_height = draw.textsize("X", font=font)
             x = x + (pos.get('width') - text_size_width) / 2
-            draw.text((x, y), "X", (0,0,0), font=font)
-
-            if server_data_choice.get("description").get("haveDescription"):
-                pos = server_data_choice.get("description").get("position")
-                x = pos.get('left')
-                y = pos.get('top')
-                font_size = pos.get('height')
-                font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
-                text_size_width, text_size_height = draw.textsize(user_description, font=font)
-                x = x + (pos.get('width') - text_size_width) / 2
-                draw.text((x, y), user_description, (0,0,0), font=font)
+            draw.text((x, y), 'X', (0,0,0), font=font)
         elif form_type == "checkbox":
-            user_choices = formValue.get("choice")
-            for user_choice_dict in user_choices:
-                user_choice = user_choice_dict.get('value')
-                user_description = user_choice_dict.get("description")
+            user_choices = formValue
+            print "user_choices = ", user_choices
+            for user_choice in user_choices:
                 server_data_choice = curServerData.get("choices").get(user_choice)
-
                 pos = server_data_choice.get("position")
                 x = pos.get('left')
                 y = pos.get('top')
@@ -70,17 +60,7 @@ def process(path, userData):
                 font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
                 text_size_width, text_size_height = draw.textsize("X", font=font)
                 x = x + (pos.get('width') - text_size_width) / 2
-                draw.text((x, y), "X", (0,0,0), font=font)
-
-                if server_data_choice.get("description").get("haveDescription"):
-                    pos = server_data_choice.get("description").get("position")
-                    x = pos.get('left')
-                    y = pos.get('top')
-                    font_size = pos.get('height')
-                    font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
-                    text_size_width, text_size_height = draw.textsize(user_description, font=font)
-                    x = x + (pos.get('width') - text_size_width) / 2
-                    draw.text((x, y), user_description, (0,0,0), font=font)
+                draw.text((x, y), 'X', (0,0,0), font=font)
         elif form_type == "multiline_text":
             userText = formValue
             pos = curServerData.get("position")
@@ -88,6 +68,8 @@ def process(path, userData):
             y = pos.get('top')
             for numOfCharPerLine in range(1, 1000):
                 lines = textwrap.wrap(userText, width=numOfCharPerLine)
+                if (len(lines) == 0): 
+                    continue
                 font_size = pos.get('height') / len(lines)
                 font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
                 text_size_width, text_size_height = draw.textsize(lines[0], font=font)
@@ -103,52 +85,46 @@ def process(path, userData):
                 y += height
 
     # img.save('sample-out.jpg')
-    img.show()
-
-
-if __name__ == "__main__":
-    data = {
-        "university": "Washington AndLeeUniversity",
-        "forms": {
-            "Full name": "Nguyen Anh Viet",
-            "Gender": "Male",
-            "Primary source of family income": {
-                "choice": "Other",
-                "description": "Hello"
-            }
-        }
-    }
-    data = {
-        "university": "SOKA",
-        "forms": {
-            "Full name": "Text is preferably wrapped on whitespaces and right after the hyphens in.",
-            "Born on or after": {
-                "choice": [
-                    {"value": "Yes", "description": ""},
-                    {"value": "No", "description": ""}
-                ]
-            }
-        }
-    }
-    process(data)
+    # img.show()
+    return img
     
 
 def generateReport():
     # print(request.form)
     form_names = []
     for form in request.form:
-        if 'source' not in form:
+        # print("form ", form, request.form.get(form))
+        if '_source' not in form:
             form_names.append(form)
-
+            
     res = dict()
 
     for form_name in form_names:
         filePath = request.form.get(form_name + "_source")
         if filePath not in res:
             res[filePath] = {}
-        res[filePath][form_name] = request.form.get(form_name)
-
+        if form_name not in res[filePath]:
+            if '_checkbox_' in form_name:
+                _form_name = form_name[:form_name.find("_checkbox_")]
+                print "form_name = ", form_name, "|| request.form.get(form_name) = ", request.form.get(form_name)
+                if _form_name not in res[filePath]:
+                    res[filePath][_form_name] = [request.form.get(form_name)]
+                else:
+                    res[filePath][_form_name].append(request.form.get(form_name))
+            else:
+                print "form_name = ", form_name
+                res[filePath][form_name] = request.form.get(form_name)
+    
+    list_imgs = []
+    list_paths = []
     for filePath in res:
-        print(filePath)
-        process(filePath, res[filePath])
-    return render_template('write_report.html', form_datas=[])
+        list_paths.append(filePath)
+        list_imgs.append(process(filePath, res[filePath]))
+    # Sort the page
+    for i in range(len(list_paths)):
+        for j in range(i + 1, len(list_paths)):
+            if (list_paths[i] > list_paths[j]):
+                list_paths[i], list_paths[j] = list_paths[j], list_paths[i]
+                list_imgs[i], list_imgs[j] = list_imgs[j], list_imgs[i]
+    list_imgs[0].save("./static/outputPDF/output.pdf", save_all=True, append_images=list_imgs[1:])
+    return redirect("/static/outputPDF/output.pdf", code=302)

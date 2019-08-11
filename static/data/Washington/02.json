@@ -1,6 +1,6 @@
 {
     "forms":{
-        "2. Full name ":{
+        "1. Full name ":{
             "position":{
                 "height":30,
                 "left":345,
@@ -9,7 +9,7 @@
             },
             "type":"text"
         },
-        "Primary source of family income1":{
+        "Primary source of family income":{
             "choices":{
                 "Family":{
                     "description":{
