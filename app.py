@@ -30,7 +30,7 @@ def userMode():
     return userMode.userMode()
 
 # app.config["IMAGE_UPLOADS"] = "static/data"
-app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
+app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF", "PDF"]
 
 @app.route("/upload-image", methods=["GET", "POST"])
 def upload_image():
@@ -59,6 +59,15 @@ def upload_image():
                 return redirect(request.url)
     dirnames = up.get_all_folder()
     return render_template("upload-image.html", dirnames=dirnames)
+
+@app.route("/check-complete", methods=["POST"])
+def check_complete():
+    from modules import upload_image as up
+    if request.method == "POST":
+        if request.form['university']:
+            uni = request.form['university']
+        path_upload = "static/data/" + uni
+        return up.check_not_complete_form(path_upload)
 
 def allowed_image(filename):
     if not "." in filename:

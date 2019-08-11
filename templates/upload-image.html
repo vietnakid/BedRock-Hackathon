@@ -28,6 +28,16 @@
 
       </form>
 
+      <form action="/check-complete" method="POST" enctype="multipart/form-data">
+        Check if university complete form:<br/>
+        {% for dirname in dirnames %}
+        <input type="radio" name="university" value="{{dirname}}">{{dirname}}<br>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Upload</button>
+
+      </form>
+
     </div>
   </div>
 </div>

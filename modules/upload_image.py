@@ -7,6 +7,13 @@ def transfer_data(path):
     _result = json.loads(result)
     return render_template('index.html', results=_result, path=path)
 
+def convert_pdf_to_image(filepath, folder_path):
+    from pdf2image import convert_from_path
+    pages = convert_from_path(path, 100)
+    for page in pages:
+        path = create_file_name(folder_path)
+        page.save(path, 'JPEG')
+
 def create_file_name(folder_path):
     from os import walk
     f = []
@@ -33,3 +40,15 @@ def get_all_folder():
         d.extend(dirnames)
         break
     return d
+
+def check_not_complete_form(folder_path):
+    from os import walk
+    f = []
+    for (dirpath, dirnames, filenames) in walk(folder_path):
+        f.extend(filenames)
+        break
+    for file_name in f:
+        if 'jpg' in file_name and file_name.replace('jpg', 'json') not in f:
+            return transfer_data(folder_path + "/" + file_name)
+    dirnames = get_all_folder()
+    return render_template('upload-image.html', dirnames=dirnames)
