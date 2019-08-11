@@ -19,23 +19,31 @@ app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["JPEG", "JPG", "PNG", "GIF"]
 
 @app.route("/upload-image", methods=["GET", "POST"])
 def upload_image():
+    from modules import upload_image as up
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
-            if request.form['university']:
+            if request.form['other-university']:
+                uni = request.form['other-university']
+            elif request.form['university']:
                 uni = request.form['university']
-                path_upload = "static/data/" + uni
+            path_upload = "static/data/" + uni
             if image.filename == "":
                 return redirect(request.url)
             if allowed_image(image.filename):
-                filename = secure_filename(image.filename)
-                os.mkdir(path_upload)
+                filename = up.create_file_name(path_upload)
+                print filename
+                try:
+                    os.mkdir(path_upload)
+                except:
+                    # print "Folder already exists"
+                    pass
                 image.save(os.path.join(path_upload, filename))
-                from modules import upload_image as up
                 return up.transfer_data(path_upload + "/" + filename)
             else:
                 return redirect(request.url)
-    return render_template("upload-image.html")
+    dirnames = up.get_all_folder()
+    return render_template("upload-image.html", dirnames=dirnames)
 
 def allowed_image(filename):
     if not "." in filename:
@@ -48,7 +56,7 @@ def allowed_image(filename):
 
 def to_pretty_json(value):
     return json.dumps(value)
-    
+
 app.jinja_env.filters['tojson_pretty'] = to_pretty_json
 
 if __name__ == "__main__":

@@ -11,16 +11,14 @@
 </head>
 
 <body>
-  <div class="container">
+  <div class="container" style="position: fixed; background: white; width: 100%">
     <div class="row">
       <div class="col-md-9">
-        <h3 class="page-header">Your Financial Form:</h3>
         <div class="img-container">
-          <img src="static/data/Washington AndLeeUniversity/01.jpg" alt="Picture">
+          <img src="{{path}}" alt="Picture">
         </div>
       </div>
       <div class="col-md-3">
-        <h3 class="page-header">Your Selected Area:</h3>
         <div class="docs-preview clearfix">
           <div class="img-preview preview-lg"></div>
           <div class="img-preview preview-md"></div>
@@ -54,16 +52,23 @@
       </div>
     </div>
   </div>
-  <div class="form-group">
+  <div class="form-group" style="padding-top: 28%">
       <form id="add_name" action="createReport" method="POST">
          <div class="table-responsive">
             <table class="table table-bordered">
+              <thead>
+                <th>Field</th>
+                <th>Input type</th>
+                <th>Action</th>
+                <th>Remove</th>
+              </thead>
               <tbody id="dynamic_field">
                <input value="{{results|length}}" id="total_form" hidden>
+               <input value="{{path}}" name="path" id="total_form" hidden>
                {% for result in results %}
                <tr id="row-{{loop.index}}">
-                  <td>Form name: <input name="form-name-{{loop.index}}" type="text" value="{{result.text}}"></td>
-                  <td>Input type:<br>
+                  <td> <textarea name="form-name-{{loop.index}}" style="width: 100%;">{{result.text}}</textarea></td>
+                  <td>
                     <input type="radio" name="input-type-{{loop.index}}" class="radInp" value="text" data-id="{{loop.index}}" checked> Text<br>
                     <input type="radio" name="input-type-{{loop.index}}" class="radInp" value="multiline_text" data-id="{{loop.index}}"> Multiline Text<br>
                     <input type="radio" name="input-type-{{loop.index}}" class="radInp" value="radio" data-id="{{loop.index}}"> Radio<br>
