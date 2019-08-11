@@ -1,18 +1,50 @@
 import vision_api as vapi
 from flask import Flask, render_template, json, request, jsonify, session, redirect, url_for
+import numpy as np
+import cv2
+
+def detectLine_AcuracyResult(_result, path):
+    
+    gray = cv2.imread(path)
+    edges = cv2.Canny(gray,50,150,apertureSize = 3)
+    minLineLength=70
+    lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=100,lines=np.array([]), minLineLength=minLineLength,maxLineGap=1)
+
+    a,b,c = lines.shape
+    line_detected = []
+    for i in range(a):
+        line_detected.append(((lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3])))
+        print((((lines[i][0][0], lines[i][0][1]), (lines[i][0][2], lines[i][0][3]))))
+
+    # print _result
+    result = []
+    for rindex in range(len(_result)):
+        res = _result[rindex]
+        curmin = 99999999999999
+        minLine = -1
+        pos = res.get('position')
+        x0 = pos.get('x') + pos.get('width')
+        y0 = pos.get('y') + pos.get('height')
+        for index in range(len(line_detected)):
+            line = line_detected[index]
+            x1 = line[0][0]
+            y1 = line[0][1]
+            distance = (x1-x0)*(x1-x0) + (y1-y0)*(y1-y0)
+            if distance < curmin:
+                curmin = distance
+                minLine = index
+
+        if minLine != -1:
+            _result[rindex]['position']['x'] = int(line_detected[minLine][0][0])
+            _result[rindex]['position']['y'] = int(line_detected[minLine][0][1]) - int(_result[rindex]['position']['height'])
+            _result[rindex]['position']['width'] = int(abs((line[0][0] - line[1][0])))
+    return _result
 
 def transfer_data(path, folder_path=""):
     json_text = vapi.detect_text(path)
     result = vapi.convert_data(json_text)
-    _result = json.loads(result)
-    return render_template('index.html', results=_result, path=path, folder_path=folder_path)
-
-def convert_pdf_to_image(filepath, folder_path):
-    from pdf2image import convert_from_path
-    pages = convert_from_path(path, 100)
-    for page in pages:
-        path = create_file_name(folder_path)
-        page.save(path, 'JPEG')
+    result = detectLine_AcuracyResult(result, path)
+    return render_template('index.html', results=result, path=path)
 
 def create_file_name(folder_path):
     from os import walk
