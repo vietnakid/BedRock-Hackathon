@@ -67,17 +67,17 @@ def normalize_bounding(bounding):
     result['height'] = height
     return result
 
-a = upload_file('/Users/trananhduc/Desktop/BedRock/Hackathon 1.0 inputs/Washington and Lee university.pdf')
-affinity_token = a['affinityToken']
-fileId = a['fileId']
+# a = upload_file('/Users/trananhduc/Desktop/BedRock/Hackathon 1.0 inputs/Washington and Lee university.pdf')
+# affinity_token = a['affinityToken']
+# fileId = a['fileId']
 
-resp = form_extract(fileId, affinity_token)
-# print resp
-processId = resp['processId']
+# resp = form_extract(fileId, affinity_token)
+# # print resp
+# processId = resp['processId']
 
-final_resp = get_form(processId, affinity_token)
-while final_resp['percentComplete'] != 100:
-    time.sleep(3)
-    final_resp = get_form(processId, affinity_token)
+# final_resp = get_form(processId, affinity_token)
+# while final_resp['percentComplete'] != 100:
+#     time.sleep(3)
+#     final_resp = get_form(processId, affinity_token)
 
-print json.dumps(normalize_data(final_resp))
+# print json.dumps(normalize_data(final_resp))

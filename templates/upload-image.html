@@ -1,45 +1,32 @@
-
-{% block title %}Upload{% endblock %}
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 {% block main %}
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Upload an image</h1>
-      <hr>
-
-      <form action="/upload-image" method="POST" enctype="multipart/form-data">
-        Name of university:<br/>
-        {% for dirname in dirnames %}
-        <input type="radio" name="university" value="{{dirname}}">{{dirname}}<br>
-        {% endfor %}
-        <input type="radio" name="university" value="">Other <input type="text" name="other-university">
-        
-        <div class="form-group">
-          <label>Select image</label>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" name="image" id="image">
-            <label class="custom-file-label" for="image">Select image...</label>
+<div id="wrapper">
+    {% include "nav-bar.html" %}
+    <div class="container" style="margin-top: 20px">
+        <div class="row">
+          <div class="col">
+            <h1>Upload an image</h1>
+            <hr>
+      
+            <form action="/upload-image" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">University</label>
+                    <select name="university" class="form-control">
+                        {% for dirname in dirnames %}
+                        <option value="{{dirname}}">{{dirname}}</option>
+                        {% endfor %}
+                    </select>
+                  <label for="exampleFormControlFile1">Example file input</label>
+                  <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
+                  <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+              </form>
+      
           </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Upload</button>
-
-      </form>
-
-      <form action="/check-complete" method="POST" enctype="multipart/form-data">
-        Check if university complete form:<br/>
-        {% for dirname in dirnames %}
-        <input type="radio" name="university" value="{{dirname}}">{{dirname}}<br>
-        {% endfor %}
-
-        <button type="submit" class="btn btn-primary">Upload</button>
-
-      </form>
-
+      </div>
     </div>
-  </div>
 </div>
+
+
 
 {% endblock %}

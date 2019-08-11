@@ -5,7 +5,7 @@ $(document).ready(function(){
         counter++;
         var form = `
         <tr id="row-${counter}">
-        <td>Form name: <input name="form-name-${counter}" type="text" value=""></td>
+        <td><textarea name="form-name-${counter}" style="width: 100%;"></textarea></td>
         <td>Input type:<br>
           <input type="radio" name="input-type-${counter}" class="radInp" value="text" data-id="${counter}" checked> Text<br>
           <input type="radio" name="input-type-${counter}" class="radInp" value="radio" data-id="${counter}"> Radio<br>

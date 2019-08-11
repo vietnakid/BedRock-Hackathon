@@ -6,9 +6,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    import modules.create_new_form as create_new_form
-    return create_new_form.create_new_form()
+    return redirect(url_for('userMode'))
 
+@app.route("/check-form")
+def check_form():
+    from modules import upload_image as up
+    dirnames = up.get_all_folder()
+    return render_template('check-form.html', dirnames=dirnames)
+    
 @app.route("/createReport", methods=['POST'])
 def createReport():
     import modules.createReport as createReport
@@ -38,16 +43,15 @@ def upload_image():
     if request.method == "POST":
         if request.files:
             image = request.files["image"]
-            if request.form['other-university']:
+            if request.form.get('other-university'):
                 uni = request.form['other-university']
-            elif request.form['university']:
+            elif request.form.get('university'):
                 uni = request.form['university']
             path_upload = "static/data/" + uni
             if image.filename == "":
                 return redirect(request.url)
             if allowed_image(image.filename):
                 filename = up.create_file_name(path_upload)
-                print filename
                 try:
                     os.mkdir(path_upload)
                 except:

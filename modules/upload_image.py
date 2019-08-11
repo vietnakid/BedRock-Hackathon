@@ -1,11 +1,11 @@
 import vision_api as vapi
 from flask import Flask, render_template, json, request, jsonify, session, redirect, url_for
 
-def transfer_data(path):
+def transfer_data(path, folder_path=""):
     json_text = vapi.detect_text(path)
     result = vapi.convert_data(json_text)
     _result = json.loads(result)
-    return render_template('index.html', results=_result, path=path)
+    return render_template('index.html', results=_result, path=path, folder_path=folder_path)
 
 def convert_pdf_to_image(filepath, folder_path):
     from pdf2image import convert_from_path
@@ -49,6 +49,6 @@ def check_not_complete_form(folder_path):
         break
     for file_name in f:
         if 'jpg' in file_name and file_name.replace('jpg', 'json') not in f:
-            return transfer_data(folder_path + "/" + file_name)
+            return transfer_data(folder_path + "/" + file_name, folder_path)
     dirnames = get_all_folder()
-    return render_template('upload-image.html', dirnames=dirnames)
+    return render_template('check-form.html', dirnames=dirnames)
