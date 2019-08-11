@@ -25,6 +25,21 @@
                                 {% if form_data.type == "multiline_text" %} 
                                 <textarea class="form-control rounded-0" name="{{form_data.title}}" rows="3"></textarea>
                                 {% endif %}
+                                {% if form_data.type == "radio" %} 
+                                    </br>
+                                    {% for choice in form_data.choices %}
+                                    <input type="radio" name="{{form_data.title}}" class="radInp" value="{{choice}}" data-id="{{loop.index}}"> {{choice}} <br>
+                                    {% endfor %}
+                                {% endif %}
+                                {% if form_data.type == "checkbox" %} 
+                                    <!-- </br> -->
+                                    {% for choice in form_data.choices %}
+                                        <div class="checkbox">
+                                                <input value={{form_data.source}} name="{{form_data.title}}_checkbox_{{loop.index}}_source" hidden>
+                                            <label><input type="checkbox" value="{{choice}}" name="{{form_data.title}}_checkbox_{{loop.index}}">{{choice}}</label>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
                             </div>
                         </br>
                         {% endfor %}
