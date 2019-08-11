@@ -7,7 +7,7 @@ import textwrap
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from flask import Flask, render_template, json, request, jsonify, session
+from flask import Flask, render_template, json, request, jsonify, session, send_file, redirect
 
 def process(path, userData):
     image_path = path[:-4] + "jpg"
@@ -20,12 +20,14 @@ def process(path, userData):
     draw = ImageDraw.Draw(img)
     
     for formText, formValue in userData.items():
-        curServerData = server_data.get(formText)
+        curServerData = {}
+        for data in server_data:
+            if data['label'] == formText:
+                curServerData = data
         form_type = curServerData.get("type")
         print("form_type = ", form_type)
         if form_type == "text":
             userText = formValue
-
             pos = curServerData.get("position")
             x = pos.get('left')
             y = pos.get('top')
@@ -46,16 +48,6 @@ def process(path, userData):
             text_size_width, text_size_height = draw.textsize("X", font=font)
             x = x + (pos.get('width') - text_size_width) / 2
             draw.text((x, y), 'X', (0,0,0), font=font)
-
-            # if server_data_choice.get("description").get("haveDescription"):
-            #     pos = server_data_choice.get("description").get("position")
-            #     x = pos.get('left')
-            #     y = pos.get('top')
-            #     font_size = pos.get('height')
-            #     font = ImageFont.truetype(r'./font/times-new-roman.ttf', font_size)
-            #     text_size_width, text_size_height = draw.textsize(user_description, font=font)
-            #     x = x + (pos.get('width') - text_size_width) / 2
-            #     draw.text((x, y), user_description, (0,0,0), font=font)
         elif form_type == "checkbox":
             user_choices = formValue
             print "user_choices = ", user_choices
@@ -134,5 +126,5 @@ def generateReport():
             if (list_paths[i] > list_paths[j]):
                 list_paths[i], list_paths[j] = list_paths[j], list_paths[i]
                 list_imgs[i], list_imgs[j] = list_imgs[j], list_imgs[i]
-    list_imgs[0].save("out.pdf", save_all=True, append_images=list_imgs[1:])
-    return render_template('write_report.html', form_datas=[])
+    list_imgs[0].save("./static/outputPDF/output.pdf", save_all=True, append_images=list_imgs[1:])
+    return redirect("/static/outputPDF/output.pdf", code=302)

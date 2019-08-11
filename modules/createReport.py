@@ -6,15 +6,18 @@ def create_report():
     # print(request.form)
     for form in request.form:
         if 'form-name-' in form:
-            ids.append(form[len('form-name-'):])
-    # print ids
+            ids.append(int(form[len('form-name-'):]))
+    ids = sorted(ids)
+    print ids
     str_form_name = 'form-name-'
     str_form_possition = 'form-possition-'
     str_input_type = 'input-type-'
+    path = request.form['path'][:-3] + 'json'
     output = {
-        "forms": {}
+        "forms": []
     }
     for index in ids:
+        index = str(index)
         form_name = str(request.form[str_form_name + index])
         form_type = str(request.form[str_input_type + index])
         if form_type == "text" or form_type == "multiline_text":
@@ -22,6 +25,7 @@ def create_report():
             form_possition = json.loads(form_possition)
             # print("form_name = ", form_name, " | form_type = ", form_type, " | form_possition = ", form_possition)
             res = {
+                    "label": form_name,
                     "type": form_type,
                     "position": {
                         "left": int(form_possition['x']),
@@ -30,9 +34,10 @@ def create_report():
                         "height": int(form_possition['height'])
                     }
                 }
-            output['forms'][form_name]= res
+            output['forms'].append(res)
         elif form_type == "radio" or form_type == "checkbox":
             res = {
+                    "label": form_name,
                     "type": form_type,
                     "choices": {
                         
@@ -59,7 +64,8 @@ def create_report():
                     }
                 }
                 res['choices'][option_name] = sub_res
-            output['forms'][form_name]= res
+            output['forms'].append(res)
     output = json.dumps(output)
-    print output
+    with open(path, 'w') as f:
+        f.write(output)
     return render_template('index.html', results=[])
