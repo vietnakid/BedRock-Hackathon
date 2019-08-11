@@ -5,4 +5,4 @@ def transfer_data(path):
     json_text = vapi.detect_text(path)
     result = vapi.convert_data(json_text)
     _result = json.loads(result)
-    return render_template('index-2.html', results=_result)
+    return render_template('index.html', results=_result)
