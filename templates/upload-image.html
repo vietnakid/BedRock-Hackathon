@@ -11,11 +11,13 @@
             <form action="/upload-image" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">University</label>
-                    <select name="university" class="form-control">
+                    <select name="university" class="form-control" id="selectUniversity">
                         {% for dirname in dirnames %}
                         <option value="{{dirname}}">{{dirname}}</option>
                         {% endfor %}
+                        <option id="other" value="other">Others</option>
                     </select>
+                    <input name="other-university" style="display: none" id="other-university">
                   <label for="exampleFormControlFile1">Example file input</label>
                   <input name="image" type="file" class="form-control-file" id="exampleFormControlFile1">
                   <button type="submit" class="btn btn-primary">Upload</button>
@@ -26,7 +28,4 @@
       </div>
     </div>
 </div>
-
-
-
 {% endblock %}

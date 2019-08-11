@@ -122,7 +122,7 @@ def generateReport():
     # print(request.form)
     form_names = []
     for form in request.form:
-        # print("form ", form, request.form.get(form))
+        print("form ", form, request.form.get(form))
         if '_source' not in form:
             form_names.append(form)
             
@@ -146,6 +146,7 @@ def generateReport():
     
     list_imgs = []
     list_paths = []
+    print filePath
     for filePath in res:
         list_paths.append(filePath)
         list_imgs.append(process(filePath, res[filePath]))

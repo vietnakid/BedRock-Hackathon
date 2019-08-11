@@ -122,6 +122,13 @@ $(document).ready(function(){
     //     });
     //   });
     
+    $( "#selectUniversity" ).change(function() {
+        if ($(this).val() == "other") {
+            $("#other-university").show()
+        } else {
+            $("#other-university").hide()
+        }
+    });
   });
 
   

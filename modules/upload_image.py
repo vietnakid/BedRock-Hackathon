@@ -8,7 +8,7 @@ def detectLine_AcuracyResult(_result, path):
     gray = cv2.imread(path)
     edges = cv2.Canny(gray,50,150,apertureSize = 3)
     minLineLength=70
-    lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=100,lines=np.array([]), minLineLength=minLineLength,maxLineGap=1)
+    lines = cv2.HoughLinesP(image=edges,rho=1,theta=np.pi/180, threshold=100,lines=np.array([]), minLineLength=minLineLength,maxLineGap=2)
 
     a,b,c = lines.shape
     line_detected = []

@@ -17,5 +17,6 @@ def write_report(universityName):
                     jdata = json.loads(data)
                     for form in jdata["forms"]:
                         form["source"] = filePath
+                        print(filePath)
                         form_datas.append(form)
     return render_template('write_report.html', form_datas=form_datas)
